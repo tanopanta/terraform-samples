@@ -25,5 +25,11 @@ locals {
 }
 
 output "vm_name" {
-  value = local.cluster.hosts[0].vms.*.name
+  value = flatten([
+      for host in local.cluster.hosts : [
+        for vm in host.vms : {
+            name = vm.name
+        }
+    ]
+  ])
 }
