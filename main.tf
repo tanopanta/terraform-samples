@@ -31,5 +31,5 @@ output "vm_name" {
             name = vm.name
         }
     ]
-  ])
+  ]).*.name
 }
